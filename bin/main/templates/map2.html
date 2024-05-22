@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1> kakao map 2 지도 정보 알아내기 </h1>
+
+<br>
+<br>
+<!-- 1단계 지도를 표시할 위치 id값 -->
+	<div id="map" style="width:500px;height:400px;"></div>
+
+	<button onclick="getInfo()">지도 정보</button>
+	<div id="result"></div>
+
+<!-- 2단계 api key 값 & sdk -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9eda72310d10e70186b843a0809cac6c"></script>
+
+
+<!-- 3단계 지도 설정 -->
+	<script>
+
+	var container = document.getElementById('map');  //id값
+	var options = {
+		center: new kakao.maps.LatLng(33.450701, 126.570667),
+		level: 2
+	};
+
+	var map = new kakao.maps.Map(container, options);
+	
+	
+	function getInfo() {
+		//현재 지도에서의 중앙 위치 좌표 값
+		var center = map.getCenter();
+		
+		//현재 지도에서의 축적(레벨) 값
+		var level = map.getLevel();
+		
+		//지도에서 현재 영역 정보
+		var bounds = map.getBounds();
+		
+		//지도에서 영역 정보 남서 북동
+		var boundsStr = bounds.toString();
+		
+		var msg  = '지도의 중심좌표는 위도 ' + center.getLat() + ', <br>';
+		    msg += '경도 ' + center.getLng() + '이고 <br>';
+		    msg += '지도의 레벨은 ' + level + '입니다. <br><br>';
+		    msg += '지도의 영역 정보는 ' + boundsStr + '입니다.';
+		    
+		var resultDiv = document.getElementById('result');
+		resultDiv.innerHTML = msg;
+		
+	}
+	
+	
+
+	</script>
+</body>
+</html>

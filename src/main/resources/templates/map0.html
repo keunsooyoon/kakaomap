@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1> kakao map 0 Basic </h1>
+
+<br>
+<br>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8"/>
+	<title>Kakao 지도 시작하기</title>
+</head>
+<body>
+
+
+<!-- 1단계 지도를 표시할 위치 id값 -->
+	<div id="map" style="width:500px;height:400px;"></div>
+
+
+<!-- 2단계 api key 값 & sdk -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9eda72310d10e70186b843a0809cac6c"></script>
+
+
+<!-- 3단계 지도 설정 -->
+	<script>
+		var container = document.getElementById('map');  //id값
+		var options = {
+			center: new kakao.maps.LatLng(33.450701, 126.570667),
+			level: 3
+		};
+
+		var map = new kakao.maps.Map(container, options);
+	</script>
+</body>
+</html>
+
+
+
+</body>
+</html>

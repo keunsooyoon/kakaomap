@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1> kakao map 1 지도 이동시키기 </h1>
+
+<br>
+<br>
+<!-- 1단계 지도를 표시할 위치 id값 -->
+	<div id="map" style="width:500px;height:400px;"></div>
+
+	<button onclick="setCenter()">지도 이동</button>
+
+<!-- 2단계 api key 값 & sdk -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9eda72310d10e70186b843a0809cac6c"></script>
+
+
+<!-- 3단계 지도 설정 -->
+	<script>
+
+	var container = document.getElementById('map');  //id값
+	var options = {
+		center: new kakao.maps.LatLng(33.450701, 126.570667),
+		level: 2
+	};
+
+	var map = new kakao.maps.Map(container, options);
+	
+	
+	function setCenter(){
+		//이동할 새로운 위치 정보, 위도와 경도
+		var moveLatLng = new kakao.maps.LatLng(37.5666805, 126.9784147);
+		
+		map.setCenter(moveLatLng);
+	}
+	
+	
+	
+
+	</script>
+</body>
+</html>

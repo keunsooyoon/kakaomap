@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+
+<h1> kakao map 4 지도 타입 변경하기 </h1>
+
+<br>
+<br>
+<!-- 1단계 지도를 표시할 위치 id값 -->
+	<div id="map" style="width:500px;height:400px;"></div>
+	<br>
+	<button onclick="getInfo('traffic')">교통 정보</button>
+	<button onclick="getInfo('roadview')">로드뷰 정보</button>
+	<button onclick="getInfo('terrain')">지형 정보</button>
+	<button onclick="getInfo('bicycle')">자전거 지도 정보</button>
+	<button onclick="getInfo('use_district')">지적편집도 정보</button>
+
+<!-- 2단계 api key 값 & sdk -->
+	<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=9eda72310d10e70186b843a0809cac6c"></script>
+
+
+<!-- 3단계 지도 설정 -->
+	<script>
+
+	var container = document.getElementById('map');  //id값
+	var options = {
+		center: new kakao.maps.LatLng(33.450701, 126.570667),
+		level: 7
+	};
+
+	var map = new kakao.maps.Map(container, options);
+	
+	var currentTypeId; //변경될 지도 타입을 담을 변수
+	
+	function getInfo(maptype) {
+		
+		var changeMapType;
+		
+		if(maptype === "traffic") {
+			changeMapType =kakao.maps.MapTypeId.TRAFFIC;
+		} else if(maptype === "roadview") {
+			changeMapType =kakao.maps.MapTypeId.ROADVIEW;
+		} else if(maptype === "terrain") {
+			changeMapType =kakao.maps.MapTypeId.RERRAIN;
+		} else if(maptype === "bicycle") {
+			changeMapType =kakao.maps.MapTypeId.BICYCLE;
+		} else if(maptype === "use_district") {
+			changeMapType =kakao.maps.MapTypeId.USE_DISTRICT;
+		}
+		
+		if (currentTypeId) {
+			map.removeOverlayMapTypeId(currentTypeId);	
+		}
+		//지도 타입 변경
+		map.addOverlayMapTypeId(changeMapType);
+		
+		currentTypeId = changeMapType;
+		
+	}
+	</script>
+</body>
+</html>
